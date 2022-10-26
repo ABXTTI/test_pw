@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="compression_sheet_print">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.basic_layout">
+                    <link rel="stylesheet" href="/custom_hw/static/src/css/style.css"/>
+                    <div class="page">
+                        <div class="custom-div-color">
+                            <p>COMPRESSION SHEET</p>
+                        </div>
+                        <div class="custom-div">
+                            <table class="styled-table">
+                                <thead>
+                                    <tr>
+                                        <th>Document No.</th>
+                                        <th>Issue No.</th>
+                                        <th>Revision No.</th>
+                                        <th>Date of Issue</th>
+                                        <th>Page No.</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span t-field="doc.granulation_sheet_document_no"/></td>
+                                        <td><span t-field="doc.issue_no"/></td>
+                                        <td><span t-field="doc.revision_no"/></td>
+                                        <td><span t-field="doc.date_of_issue"/></td>
+                                        <td><span>1 of 1</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div>
+                            <table class="styled-table">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Regn No.</th>
+                                        <th>Batch No.</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span t-field="doc.product_id.name"/></td>
+                                        <td><span t-field="doc.regn_no"/></td>
+                                        <td><span t-field="doc.batch_no"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="custom-div">
+                            <table class="styled-table">
+                                <thead>
+                                    <tr>
+                                        <th>Bulk Approv. No.</th>
+                                        <th>Approv. Date</th>
+                                        <th>Bulk Received</th>
+                                        <th>Comp. Weight</th>
+                                        <th>Machine</th>
+                                        <th>Punch Size</th>
+                                        <th>Starting Date</th>
+                                        <th>Completion Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span style="font-weight:normal" t-field="doc.bulk_approval_no"/></td>
+                                        <td><span style="font-weight:normal" t-field="doc.bulk_approval_date"/></td>
+                                        <td><span style="font-weight:normal" t-field="doc.bulk_received"/></td>
+                                        <td><span style="font-weight:normal" t-field="doc.comp_weight"/></td>
+                                        <td><span style="font-weight:normal" t-field="doc.machine"/></td>
+                                        <td><span style="font-weight:normal" t-field="doc.punch_size"/></td>
+                                        <td><span style="font-weight:normal" t-field="doc.compression_starting_date"/></td>
+                                        <td><span style="font-weight:normal" t-field="doc.compression_completion_date"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="custom-div">
+                            <table class="styled-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date &amp; Time</th>
+                                        <th>Weight of 10 Tabs gm I</th>
+                                        <th>Weight of 10 Tabs gm II</th>
+                                        <th>Col. Height mm I</th>
+                                        <th>Col. Height mm II</th>
+                                        <th>Hardness Kp Stocks I</th>
+                                        <th>Hardness Kp Stocks II</th>
+                                        <th>D.T.</th>
+                                        <th>Friability</th>
+                                        <th>Initial</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="doc.compression_lines" t-as="line">
+                                        <tr>
+                                            <td><span style="font-weight:normal" t-field="line.date_time"/></td>
+                                            <td><span style="font-weight:normal" t-field="line.weight_gm_1"/></td>
+                                            <td><span style="font-weight:normal" t-field="line.weight_gm_2"/></td>
+                                            <td><span style="font-weight:normal" t-field="line.col_height_mm_1"/></td>
+                                            <td><span style="font-weight:normal" t-field="line.col_height_mm_2"/></td>
+                                            <td><span style="font-weight:normal" t-field="line.hardness_kp_stockes_1"/></td>
+                                            <td><span style="font-weight:normal" t-field="line.hardness_kp_stockes_2"/></td>
+                                            <td><span style="font-weight:normal" t-field="line.dt"/></td>
+                                            <td><span style="font-weight:normal" t-field="line.friability"/></td>
+                                            <td><span style="font-weight:normal" t-field="line.initial"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mrp_routing_workcenter_sub_all,access.mrp.routing.workcenter.sub.all,model_mrp_routing_workcenter_sub,,1,1,1,1
+access_mrp_routing_workcenter_line_all,access.mrp.routing.workcenter.line.all,model_mrp_routing_workcenter_line,,1,1,1,1
+access_granulation_line_all,access.granulation.line.all,model_granulation_line,,1,1,1,1
+access_compression_line_all,access.compression.line.all,model_compression_line,,1,1,1,1

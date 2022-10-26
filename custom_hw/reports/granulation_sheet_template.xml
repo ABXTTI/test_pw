@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="granulation_sheet_print">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.basic_layout">
+                    <link rel="stylesheet" href="/custom_hw/static/src/css/style.css"/>
+                    <div class="page">
+                        <div class="custom-div-color">
+                            <p>GRANULATION SHEET</p>
+                        </div>
+                        <div class="custom-div">
+                            <table class="styled-table">
+                                <thead>
+                                    <tr>
+                                        <th>Document No.</th>
+                                        <th>Issue No.</th>
+                                        <th>Revision No.</th>
+                                        <th>Date of Issue</th>
+                                        <th>Page No.</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span t-field="doc.granulation_sheet_document_no"/></td>
+                                        <td><span t-field="doc.issue_no"/></td>
+                                        <td><span t-field="doc.revision_no"/></td>
+                                        <td><span t-field="doc.date_of_issue"/></td>
+                                        <td><span>1 of 1</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div>
+                            <table class="styled-table">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Regn No.</th>
+                                        <th>Batch No.</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span t-field="doc.product_id.name"/></td>
+                                        <td><span t-field="doc.regn_no"/></td>
+                                        <td><span t-field="doc.batch_no"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="custom-div">
+                            <table class="styled-table">
+                                <thead>
+                                    <tr>
+                                        <th>Prod. Order No.</th>
+                                        <th>Prod. Order Date</th>
+                                        <th>Date of Start</th>
+                                        <th>Date of Finish</th>
+                                        <th>Batch Size</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span style="font-weight:normal" t-field="doc.production_id.name"/></td>
+                                        <td><span style="font-weight:normal" t-field="doc.production_id.date_planned_start"/></td>
+                                        <td><span style="font-weight:normal" t-field="doc.date_planned_start"/></td>
+                                        <td><span style="font-weight:normal" t-field="doc.date_planned_finished"/></td>
+                                        <td><span style="font-weight:normal" t-field="doc.batch_size"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div style="text-align:center; font-size:12px;">MIXING/WET GRANULATION</div>
+                        <div class="custom-div">
+                            <table class="styled-table-other">
+                                <thead>
+                                    <tr>
+                                        <th>Time Started</th>
+                                        <th><span t-field="doc.mixing_wet_time_started"/></th>
+                                        <th>Time Completed</th>
+                                        <th><span t-field="doc.mixing_wet_time_completed"/></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="custom-div">
+                            <table class="styled-table-other">
+                                <thead>
+                                    <tr>
+                                        <th><span t-field="doc.mixing_wet_description"/></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="custom-div">
+                            <table class="styled-table">
+                                <thead>
+                                    <tr>
+                                        <th>Quantity</th>
+                                        <th>Description</th>
+                                        <th>Q.C. No.</th>
+                                        <th>Performed By</th>
+                                        <th>Checked By</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="doc.mixing_wet_lines" t-as="line">
+                                        <tr>
+                                            <td><span style="font-weight:normal" t-field="line.qty"/></td>
+                                            <td><span style="font-weight:normal" t-field="line.material_id.name"/></td>
+                                            <td><span style="font-weight:normal" t-field="line.qc_no"/></td>
+                                            <td><span style="font-weight:normal" t-field="line.performed_by"/></td>
+                                            <td><span style="font-weight:normal" t-field="line.checked_by"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div style="text-align:center; font-size:12px;">PASTE/SOLUTION PREPARATION</div>
+                        <div class="custom-div">
+                            <table class="styled-table-other">
+                                <thead>
+                                    <tr>
+                                        <th>Time Started</th>
+                                        <th><span t-field="doc.paste_solution_time_started"/></th>
+                                        <th>Time Completed</th>
+                                        <th><span t-field="doc.paste_solution_time_completed"/></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="custom-div">
+                            <table class="styled-table-other">
+                                <thead>
+                                    <tr>
+                                        <th><span t-field="doc.paste_solution_description"/></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="custom-div">
+                            <table class="styled-table">
+                                <thead>
+                                    <tr>
+                                        <th>Quantity</th>
+                                        <th>Description</th>
+                                        <th>Q.C. No.</th>
+                                        <th>Performed By</th>
+                                        <th>Checked By</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="doc.paste_solution_lines" t-as="line">
+                                        <tr>
+                                            <td><span style="font-weight:normal" t-field="line.qty"/></td>
+                                            <td><span style="font-weight:normal" t-field="line.material_id.name"/></td>
+                                            <td><span style="font-weight:normal" t-field="line.qc_no"/></td>
+                                            <td><span style="font-weight:normal" t-field="line.performed_by"/></td>
+                                            <td><span style="font-weight:normal" t-field="line.checked_by"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div style="text-align:center; font-size:12px;">DRYING</div>
+                        <div class="custom-div">
+                            <table class="styled-table-other">
+                                <thead>
+                                    <tr>
+                                        <th>Time Started</th>
+                                        <th><span t-field="doc.drying_time_started"/></th>
+                                        <th>Time Completed</th>
+                                        <th><span t-field="doc.drying_time_completed"/></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="custom-div">
+                            <table class="styled-table-other">
+                                <thead>
+                                    <tr>
+                                        <th><span t-field="doc.drying_description"/></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div style="text-align:center; font-size:12px;">LUBRICATION</div>
+                        <div class="custom-div">
+                            <table class="styled-table-other">
+                                <thead>
+                                    <tr>
+                                        <th>Time Started</th>
+                                        <th><span t-field="doc.lubrication_time_started"/></th>
+                                        <th>Time Completed</th>
+                                        <th><span t-field="doc.lubrication_time_completed"/></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="custom-div">
+                            <table class="styled-table-other">
+                                <thead>
+                                    <tr>
+                                        <th><span t-field="doc.lubrication_description"/></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="custom-div">
+                            <table class="styled-table">
+                                <thead>
+                                    <tr>
+                                        <th>Quantity</th>
+                                        <th>Description</th>
+                                        <th>Q.C. No.</th>
+                                        <th>Performed By</th>
+                                        <th>Checked By</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="doc.lubrication_lines" t-as="line">
+                                        <tr>
+                                            <td><span style="font-weight:normal" t-field="line.qty"/></td>
+                                            <td><span style="font-weight:normal" t-field="line.material_id.name"/></td>
+                                            <td><span style="font-weight:normal" t-field="line.qc_no"/></td>
+                                            <td><span style="font-weight:normal" t-field="line.performed_by"/></td>
+                                            <td><span style="font-weight:normal" t-field="line.checked_by"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div style="text-align:center; font-size:12px;">MAG. STEARATE</div>
+                        <div class="custom-div">
+                            <table class="styled-table-other">
+                                <thead>
+                                    <tr>
+                                        <th><span t-field="doc.mag_stearate_description"/></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
