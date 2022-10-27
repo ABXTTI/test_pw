@@ -289,25 +289,44 @@
   		</field>
 	</record>
 
-	<record id="action_work_order_custom" model="ir.actions.act_window">
-	   <field name="name">Work Order</field>
+	<record id="action_work_order_custom_granulation" model="ir.actions.act_window">
+	   <field name="name">Work Order Granulation</field>
 	   <field name="res_model">mrp.workorder</field>
 	   <field name="view_mode">tree,form</field>
 	   <field name="context">{}</field>
 		<field name="domain">[]</field>
-<!--	   <field name="domain">[('transaction_with', '=', 'vendor')]</field>-->
+	   <field name="domain">[('name', '=', 'Granulation')]</field>
 	   <field name="view_id" ref="view_work_order_tree_custom"/>
 	   <field name="help" type="html">
 		   <p class="o_view_nocontent_smiling_face">
-			   Create Your work order Here!
+			   Granulation!
 		   </p>
 	   </field>
 	</record>
 
+	<record id="action_work_order_custom_compression" model="ir.actions.act_window">
+	   	<field name="name">Work Order Compression</field>
+	   	<field name="res_model">mrp.workorder</field>
+	   	<field name="view_mode">tree,form</field>
+<!--		<field name="context">{'default_transaction_with': 'customer', 'default_payment_type': 'receive'}</field>-->
+		<field name="domain">[('name', '=', 'Compression')]</field>
+	   	<field name="help" type="html">
+		   <p class="o_view_nocontent_smiling_face">
+			   Compression!
+		   </p>
+	   	</field>
+	</record>
 
-	<menuitem id="menu_work_order_custom"
-	 name="Work Order Cust."
+
+	<menuitem id="menu_work_order_custom_granulation"
+	 name="Work Order Granulation"
 	 parent="mrp.menu_mrp_manufacturing"
-	 action="action_work_order_custom"
+	 action="action_work_order_custom_granulation"
+	 sequence="100"/>
+
+	<menuitem id="menu_work_order_custom_compression"
+	 name="Work Order Compression"
+	 parent="mrp.menu_mrp_manufacturing"
+	 action="action_work_order_custom_compression"
 	 sequence="100"/>
 </odoo>
