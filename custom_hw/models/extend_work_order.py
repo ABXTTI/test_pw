@@ -1,3 +1,4 @@
+import odoo.exceptions
 from odoo import fields, models, api
 
 class MrpWorkorder(models.Model):
@@ -50,6 +51,18 @@ class MrpWorkorder(models.Model):
     compression_starting_date = fields.Date(string="Starting Date")
     compression_completion_date = fields.Date(string="Completion Date")
     compression_lines = fields.One2many("compression.line", "work_order_id", string="Compression Lines")
+
+    def fetch_lines(self):
+        mixing_wet_granulation = self.env['mrp.routing.workcenter.line'].search([('sub_operation_id.name', '=', 'Mixing/Wet Granulation'), ('operation_id.bom_id', '=', self.production_id.bom_id.id)])
+        if len(mixing_wet_granulation) > 1:
+            raise odoo.exceptions.ValidationError("There is more than 1 BOM exists @@@ for this product")
+        lines = [(5,0,0)]
+        for product in mixing_wet_granulation.material_id:
+            vals = {
+                'material_id': product.id,
+            }
+            lines.append((0,0,vals))
+        self.mixing_wet_lines = lines
 
 class GranulationLine(models.Model):
     _name = "granulation.line"

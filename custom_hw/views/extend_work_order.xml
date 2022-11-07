@@ -52,6 +52,7 @@
 					<button name="button_pending" type="object" string="Pause" class="btn-warning" attrs="{'invisible': ['|', '|', ('production_state', 'in', ('draft', 'done', 'cancel')), ('working_state', '=', 'blocked'), ('is_user_working', '=', False)]}"/>
 					<button name="button_finish" type="object" string="Done" class="btn-success" attrs="{'invisible': ['|', '|', ('production_state', 'in', ('draft', 'done', 'cancel')), ('working_state', '=', 'blocked'), ('is_user_working', '=', False)]}"/>
 					<button name="538" type="action" string="Block" context="{'default_workcenter_id': workcenter_id}" class="btn-danger" attrs="{'invisible': ['|', ('production_state', 'in', ('draft', 'done', 'cancel')), ('working_state', '=', 'blocked')]}"/>
+					<button name="fetch_lines" type="object" string="Fetch Data"/>
 					<button name="button_unblock" type="object" string="Unblock" context="{'default_workcenter_id': workcenter_id}" class="btn-danger" attrs="{'invisible': ['|', ('production_state', 'in', ('draft', 'done', 'cancel')), ('working_state', '!=', 'blocked')]}"/>
 					<button name="action_open_wizard" type="object" icon="fa-external-link" class="oe_edit_only" context="{'default_workcenter_id': workcenter_id}"/>
 					<field name="state" widget="statusbar" statusbar_visible="pending,waiting,ready,progress,done"/>
@@ -310,6 +311,7 @@
 	   	<field name="view_mode">tree,form</field>
 <!--		<field name="context">{'default_transaction_with': 'customer', 'default_payment_type': 'receive'}</field>-->
 		<field name="domain">[('name', '=', 'Compression')]</field>
+		<field name="view_id" ref="view_work_order_tree_custom"/>
 	   	<field name="help" type="html">
 		   <p class="o_view_nocontent_smiling_face">
 			   Compression!

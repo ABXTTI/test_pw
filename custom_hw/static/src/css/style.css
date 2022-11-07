@@ -22,7 +22,7 @@
     border-collapse: collapse;
     margin: 0px 0;
     margin-bottom: 0px 0;
-    font-size: 8px;
+    font-size: 7px;
     font-family: sans-serif;
     width: 100%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -32,16 +32,18 @@
     background-color: #009879;
     color: #ffffff;
     text-align: left;
+    line-height: 5px;
 }
 
 .styled-table th,
 .styled-table td {
-    padding: 12px 15px;
+    padding: 7px 7px;
     border: 1px solid black;
+    line-height: 5px;
 }
 .styled-table-other th,
 .styled-table-other td {
-    padding: 12px 15px;
+    padding: 7px 7px;
 }
 
 .styled-table tbody tr {
