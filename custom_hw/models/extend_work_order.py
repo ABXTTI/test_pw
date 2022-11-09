@@ -15,7 +15,7 @@ class MrpWorkorder(models.Model):
     production_order_date = fields.Date(string="Production Order Date")
     granulation_start_date = fields.Date(string="Granulation Date of Start")
     granulation_finish_date = fields.Date(string="Granulation Date of Finish")
-    regn_no = fields.Integer(string="Regn. No.")
+    regn_no = fields.Char(string="Regn. No.")
     batch_no = fields.Integer(string="Batch No.")
     batch_size = fields.Float(string="Batch Size", related="production_id.product_qty")
     mixing_wet_time_started = fields.Datetime(string="Mixing/Wet Time Started")
@@ -53,6 +53,17 @@ class MrpWorkorder(models.Model):
     compression_lines = fields.One2many("compression.line", "work_order_id", string="Compression Lines")
 
     def fetch_lines(self):
+        custom_settings = self.env['res.settings.mrp.custom'].search([])
+        issue_no_granulation = custom_settings[0].issue_number_granulation
+        issue_date_granulation = custom_settings[0].date_of_issue_granulation
+        revision_no_granulation = custom_settings[0].revision_no_granulation
+        issue_number_compression = custom_settings[0].issue_number_compression
+        date_of_issue_compression = custom_settings[0].date_of_issue_compression
+        revision_no_compression = custom_settings[0].revision_no_compression
+        self.issue_no = issue_no_granulation if self.name == "Granulation" else issue_number_compression
+        self.date_of_issue = issue_date_granulation if self.name == "Granulation" else date_of_issue_compression
+        self.revision_no = revision_no_granulation if self.name == "Granulation" else revision_no_compression
+        self.regn_no = self.product_id.product_tmpl_id.regn_no
         mixing_wet_granulation = self.env['mrp.routing.workcenter.line'].search([('sub_operation_id.name', '=', 'Mixing/Wet Granulation'), ('operation_id.bom_id', '=', self.production_id.bom_id.id)])
         if len(mixing_wet_granulation) > 1:
             raise odoo.exceptions.ValidationError("There is more than 1 BOM exists @@@ for this product")
@@ -63,6 +74,7 @@ class MrpWorkorder(models.Model):
             }
             lines.append((0,0,vals))
         self.mixing_wet_lines = lines
+
 
 class GranulationLine(models.Model):
     _name = "granulation.line"

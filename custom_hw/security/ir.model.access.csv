@@ -3,3 +3,4 @@ access_mrp_routing_workcenter_sub_all,access.mrp.routing.workcenter.sub.all,mode
 access_mrp_routing_workcenter_line_all,access.mrp.routing.workcenter.line.all,model_mrp_routing_workcenter_line,,1,1,1,1
 access_granulation_line_all,access.granulation.line.all,model_granulation_line,,1,1,1,1
 access_compression_line_all,access.compression.line.all,model_compression_line,,1,1,1,1
+access_res_settings_mrp_custom_manager,access.res.settings.mrp.custom.manager,model_res_settings_mrp_custom,,1,1,1,1

@@ -16,6 +16,7 @@
                 <field name="time_ids" invisible="1"/>
                 <field name="working_state" invisible="1"/>
                 <field name="operation_id" invisible="1" domain="['|', ('bom_id', '=', production_bom_id), ('bom_id', '=', False)]" context="{'default_workcenter_id': workcenter_id, 'default_company_id': company_id}"/>
+                <field name="create_date" string="Create Date"/>
                 <field name="name" string="Operation"/>
                 <field name="workcenter_id"/>
                 <field name="product_id" optional="show"/>
@@ -109,7 +110,7 @@
 							</tree>
 						</field>
 					</page>
-					<page string="Granulation Sheet" name="granulation_sheet" attrs="{'invisible': [('name','!=', 'Granulation Sheet')]}">
+					<page string="Granulation Sheet" name="granulation_sheet" attrs="{'invisible': [('name','!=', 'Granulation')]}">
 						<group>
 							<group>
 								<group>
@@ -207,7 +208,7 @@
 						</group>
 					</page>
 <!--						/////   Compression Sheet Started ///////////-->
-					<page string="Compression Sheet" name="compression_sheet" attrs="{'invisible': [('name','!=', 'Compression Sheet')]}">
+					<page string="Compression Sheet" name="compression_sheet" attrs="{'invisible': [('name','!=', 'Compression')]}">
 						<group>
 							<group>
 								<group>

@@ -15,10 +15,12 @@ You could use this simplified accounting in case you work with an (external) acc
     'category': 'Other',
     'website': 'https://www.odoo.com/app/invoicing',
     'images' : [],
-    'depends' : ['base', 'mrp'],
+    'depends' : ['base', 'mrp','stock'],
     'data': [
         'security/ir.model.access.csv',
+        'views/res_config_settings_form.xml',
         'views/sub_operation.xml',
+        'views/product_template_inherit.xml',
         'views/extend_work_order.xml',
         'reports/granulation_sheet_template.xml',
         'reports/compression_sheet_template.xml',
